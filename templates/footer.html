@@ -1,0 +1,8 @@
+<!-- footer.html -->
+{% block footer %}
+    {% if now %}
+        <h3 style="text-align: center;color: red">现在时间为：{{ now }}</h3>
+    {% else %}
+        <h3 style="text-align: center;color: red">&copy;2018文本内容取自网络，如有侵权请来信通知下架...</h3>
+    {% endif %}
+{% endblock %}
