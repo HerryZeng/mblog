@@ -1,5 +1,6 @@
 <!-- index.html -->
 {% extends 'base.html' %}
+{% load markdown_deux_tags %}
 {% block title %} 欢迎光临我的博客 {% endblock %}
 {% block headmessage %}
     <h3 style="font-family: 宋体;">本站文章列表</h3>
@@ -17,7 +18,7 @@
 
             <div class="panel-body" style="background-color: #ffffdd">
                 <p>
-                    {{ post.body | truncatechars:40 }}
+                    {{ post.body | truncatechars:40 | markdown}}
                 </p>
             </div>
 
