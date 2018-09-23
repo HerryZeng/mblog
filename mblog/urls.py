@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, re_path
 
 from mainsite.views import homepage, showpost
+from newtable.views import about,listing,disp_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls,name="index"),
     path('',homepage),
     re_path('post/(\w+)/', showpost),
     # path('favicon.ico', serve, {'path': 'images/favicon.ico'}),
+    path('about/',about,name='about'),
+    re_path('list/([0-9]+)/',disp_detail),
+    path('list/',listing,name='listing'),
 
 ]
