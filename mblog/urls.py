@@ -28,5 +28,7 @@ urlpatterns = [
     re_path('list/([0-9]+)/',disp_detail),
     path('list/',listing,name='listing'),
     path('video/', include('video.urls'), name='video_index'),
+    path('ch08www/', include('ch08www.urls'), name='ch08ww_index'),
+
 
 ]

@@ -1,0 +1,50 @@
+<!-- ch08www index.html-->
+{% extends "ch08www/base.html" %}
+{% block title %}我有话要说{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form name="my_form" action="/ch08www/" method="GET">
+            <label for="byear">出生年:</label>
+            <select name="byear">
+                {% for year in years %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+
+            </select><br/>
+
+            喜欢的颜色:
+            <input type="checkbox" name="fcolor" value="Green"/>Green
+            <input type="checkbox" name="fcolor" value="Red"/>Red
+            <input type="checkbox" name="fcolor" value="Blue"/>Blue
+            <input type="checkbox" name="fcolor" value="Yellow"/>Yellow
+            <input type="checkbox" name="fcolor" value="Orange"/>Orange
+            <br/>
+
+            <label for="user_id">你的ID:</label>
+            <input id="user_id" type="text" name="user_id">
+            <label for="user_pass">你的密码:</label>
+            <input id="user_pass" type="password" name="user_pass"/>
+            <input type="submit" value="登录"/>
+            <input type="reset" value="重置"/>
+            {% csrf_token %}
+        </form>
+        <div id="dis_input" style="display: block">
+            颜色喜好：
+            {% for c in user_fcolor %}
+                {{ c }}
+            {% empty %}
+                没有选择任何颜色
+            {% endfor %}
+            <br/>
+            你的ID: {{ user_id | default:'未输入ID' }} <br/>
+            出生年: {{ byear }}
+            <br/>
+            {% if verified %}
+                <em>你通过了验证</em>
+            {% else %}
+                <em>密码或账号输入有错哦！</em>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
