@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'markdown_deux',
     'mainsite',
     'newtable',
+    'video',
 ]
 
 MIDDLEWARE = [

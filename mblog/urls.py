@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 
 from mainsite.views import homepage, showpost
-from newtable.views import about,listing,disp_detail
+from newtable.views import about, listing, disp_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls,name="index"),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('about/',about,name='about'),
     re_path('list/([0-9]+)/',disp_detail),
     path('list/',listing,name='listing'),
+    path('video/', include('video.urls'), name='video_index'),
 
 ]

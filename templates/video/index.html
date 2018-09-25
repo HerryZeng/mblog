@@ -1,0 +1,59 @@
+<!-- video index.html-->
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>视频直播主页</title>
+    <link REL="SHORTCUT ICON" HREF="{% static "images/favicon.ico" %}"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="{% static "js/bootstrap-datepicker.js" %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">现在播出 {{ tv.name }}</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/video/">主页</a></li>
+            <li><a href="{% url 'video:tv-url' 0 %}">东森</a></li>
+            <li><a href="{% url 'video:tv-url' 1 %}">民视</a></li>
+            <li><a href="{% url 'video:tv-url' 2 %}">台视</a></li>
+            <li><a href="{% url 'video:tv-url' 3 %}">华视</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div id="tvcode" align="center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tv.tvcode }}?autoplay=1" frameborder="0"
+                allowfullscreen></iframe>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-footer">
+        <em>
+            {{ now }}</em>
+    </div>
+</div>
+</body>
+</html>
